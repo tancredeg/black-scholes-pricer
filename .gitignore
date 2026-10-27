@@ -1,19 +1,21 @@
-﻿# Virtual environment — NEVER commit
+# Virtual environments
 .venv/
 venv/
 env/
 
 # Python artefacts
 __pycache__/
-*.pyc
-*.pyo
-*.pyd
-.pytest_cache/
-.ipynb_checkpoints/
+*.py[cod]
 *.egg-info/
-
-# Local data (regenerate via yfinance)
-data/SPY.csv
+build/
+dist/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+.ipynb_checkpoints/
 
 # OS / editor
 .DS_Store

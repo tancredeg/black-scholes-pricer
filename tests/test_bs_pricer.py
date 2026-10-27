@@ -14,7 +14,7 @@ import itertools
 import numpy as np
 import pytest
 
-import bs_pricer as bs
+import bspricer as bs
 
 # ---------------------------------------------------------------------------
 # Parameter grids

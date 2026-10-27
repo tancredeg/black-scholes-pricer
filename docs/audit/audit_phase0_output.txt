@@ -1,0 +1,59 @@
+[A01 call S<K, fwd ITM] limit=10.1189, sigma=1e-06=10.1189, sigma=1e-08=10.1189, sigma=1e-10=0, sigma=0=0
+[A01 call S=K, q>r] limit=0, sigma=1e-06=0, sigma=1e-08=0, sigma=1e-10=-9.16188, sigma=0=-9.16188
+[A01 put  S<K, fwd OTM] limit=0, sigma=1e-06=0, sigma=1e-08=0, sigma=1e-10=-10.1189, sigma=0=-10.1189
+[A02 reference engine vs repo engine (q=0)] max_abs_diff=0
+[A02 q=0.013 repo engine] mean=-0.286084, se=0.00902688, t_stat=-31.6924
+[A02 q=0.013 with dividend accrual] mean=-0.00946325, se=0.00896045, t_stat=-1.05611
+[A03 notebook convention (theta*DT), mean sum over path] gamma=4.01293, theta=-0.0199727, total=3.99296
+[A03/A04 correct theta units, no financing] gamma=4.01293, theta=-5.03312, total=-1.02019, se=0.00903563
+[A04 with financing term -r(C - S*Delta)dt] financing=1.0186, total=-0.00158922, se=0.00867141
+[A05 ATM annual terms] theta_annual=-41.8528, notebook_sum_theta_minus=-75.6452, correct_sum_theta_plus=-8.06045, r_times_C_minus_S_Delta=-8.06045
+[A06 ITM probabilities] N_d2_Q=0.523134, N_d2_P=0.587632, notebook_text_Q=0.48, notebook_text_P=0.57, printed_by_fstring=0.5%
+[A07 last 30d window] implemented=0.131337, latex_formula=0.131336
+[A07 Mar-2020 window] implemented=0.770446, latex_formula=0.770446, rel_gap=-1.92824e-08
+[A07 max relative gap over all 30d windows 2020-2024] value=0.00646841
+[A08 README q=0.013] delta_code=0.538981, gamma_code=0.0195026, theta_code=-0.157034, vega_code=42.3926, rho_code=18.8464, delta_readme=0.5446, gamma_readme=0.01946, theta_readme=-0.1666, vega_readme=42.3, rho_readme=19.19
+[A09 FD vs analytic, max relative error (|greek|>1e-4)] delta=0.00482872, gamma=0.0020474, theta=1.67347e-07, vega=2.45615e-07, rho=3.26925e-08
+[A09 FD vs analytic, max absolute error] delta=2.15565e-05, gamma=1.3336e-05, theta=3.9229e-09, vega=2.50605e-07, rho=7.2889e-08
+[A10 N=3] std=3.72842, kamal_derman=4.11674, ratio=0.905671
+[A10 N=5] std=2.9775, kamal_derman=3.18882, ratio=0.933732
+[A10 N=6] std=2.73008, kamal_derman=2.91098, ratio=0.937857
+[A10 N=10] std=2.12833, kamal_derman=2.25483, ratio=0.943896
+[A10 N=15] std=1.75651, kamal_derman=1.84106, ratio=0.954071
+[A10 N=30] std=1.25918, kamal_derman=1.30183, ratio=0.967239
+[A10 N=60] std=0.898927, kamal_derman=0.920532, ratio=0.976529
+[A10 N=120] std=0.639206, kamal_derman=0.650915, ratio=0.982012
+[A10 N=240] std=0.456151, kamal_derman=0.460266, ratio=0.99106
+[A10 N=480] std=0.322492, kamal_derman=0.325457, ratio=0.990889
+[A10 log-log slope] slope_all_N=-0.483794, slope_N_ge_10=-0.487361
+[A10 test_rmse_scales_as_sqrt_dt band] lower=1.13137, upper=1.83848, ratio_if_slope_minus_0_25=1.18921, ratio_if_slope_minus_0_75=1.68179
+[A11 sigma_h=0.15 predictor=expected-var] mean_pnl=-1.69223, mean_pred=-1.69469, slope=0.536357, intercept=-0.783268, R2=0.0668068
+[A11 sigma_h=0.15 predictor=realised-var] mean_pnl=-1.69223, mean_pred=-1.71367, slope=0.978463, intercept=-0.0154639, R2=0.942614
+[A11 sigma_h=0.23 predictor=expected-var] mean_pnl=1.68719, mean_pred=1.6884, slope=1.54578, intercept=-0.922716, R2=0.370308
+[A11 sigma_h=0.23 predictor=realised-var] mean_pnl=1.68719, mean_pred=1.67734, slope=1.02695, intercept=-0.0353526, R2=0.959808
+[A11 call/put hedging errors with sigma_h=0.25 != sigma_r] max_abs_diff=4.23883e-13
+[A12 deep ITM call 5d, true sigma 0.19] price=110.307, iv=1e-06
+[A12 price = lower bound + 1e-9] price=110.307, iv=0.351101
+[A12 price = lower bound - 1e-11] price=110.307, raised=Root not bracketed: f(1e-06)=1.000444e-11, f(5.0)=5.407084e+01. Widen 
+[A13 S=1e-8] call=0, put=308.16, put_expected=308.16
+[A13 S=0] call=0, gamma=nan
+[A13 S=1e8 call - (S - K e^-rT)] diff=0
+[A13 negative sigma accepted] price=0
+[A13 negative T accepted] price=10
+[A13 bs_greeks_vec with a zero sigma] gamma=[0.01889630971684505, nan, 0.01580913220296949], vega=[38.467487637863144, 0.0, 36.61696144535409]
+[A14 T=60/252, 30 steps, default dt=1/252 (silent)] rmse=2.79312, mean=1.09581
+[A14 same paths, dt=2/252 (consistent)] rmse=1.81766, mean=0.00497086
+[A15 T=0, S=K] call_delta=1, put_delta=0
+[A16 SPY.csv] rows=1257, first=2020-01-02, last=2024-12-30, n_nan=0, dup_dates=0, monotonic=True
+[A16 vol figures] peak_30d=0.826918, peak_date=2020-04-08, trough_30d=0.0684447, trough_date=2024-07-16, first_252d_date=2020-12-31, max_div=0.239901, max_div_date=2021-01-14
+[A16 min 30d vol by period (notebook text: 6-8% in 2021 H1 and 2023-2024)] h1_2021=0.0841824, y2023=0.0799959, y2024=0.0684447
+[A21 adjusted-close drift (fresh Yahoo download vs attached CSV)] same_dates=True, price_ratio_min=0.994959, price_ratio_max=0.99496, max_abs_logreturn_diff=8.87956e-07
+[A17 scalar vs vectorised, 300 paths x 30 steps] scalar_s=2.20622, vec_s=0.00859911, speedup=256.564
+[A18 vega] vega_per_unit=42.3464, usd_per_vol_point=0.423464, notebook_claims_per_point=42.3464
+[A19 max |PDE residual| on test grid] value=1.25677e-13
+[A20 MC put seed=42] mc_put=7.14799, bs_put=7.19537
+[F01 cost=1bp] best_N=480, best_rmse=0.419527, rmse_by_N={3: 3.765, 5: 2.958, 6: 2.741, 10: 2.134, 15: 1.739, 30: 1.269, 60: 0.928, 120: 0.662, 240: 0.497, 480: 0.42}, mean_cost_by_N={3: 0.048, 5: 0.054, 6: 0.057, 10: 0.065, 15: 0.072, 30: 0.089, 60: 0.112, 120: 0.143, 240: 0.187, 480: 0.25}
+[F01 cost=5bp] best_N=120, best_rmse=0.991909, rmse_by_N={3: 3.792, 5: 2.986, 6: 2.773, 10: 2.173, 15: 1.79, 30: 1.357, 60: 1.105, 120: 0.992, 240: 1.089, 480: 1.36}, mean_cost_by_N={3: 0.24, 5: 0.272, 6: 0.285, 10: 0.324, 15: 0.362, 30: 0.444, 60: 0.558, 120: 0.715, 240: 0.937, 480: 1.25}
+[F01 cost=10bp] best_N=60, best_rmse=1.50749, rmse_by_N={3: 3.84, 5: 3.044, 6: 2.84, 10: 2.265, 15: 1.919, 30: 1.585, 60: 1.507, 120: 1.633, 240: 2.024, 480: 2.659}, mean_cost_by_N={3: 0.48, 5: 0.544, 6: 0.57, 10: 0.649, 15: 0.724, 30: 0.888, 60: 1.116, 120: 1.43, 240: 1.874, 480: 2.501}
+
+Wrote audit_phase0_results.json

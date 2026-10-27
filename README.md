@@ -1,5 +1,7 @@
 # Black-Scholes Options Pricer and Delta Hedging Simulator
 
+> **v1.0 rework in progress (October 2026).** The code now lives in `src/bspricer/` (`pip install -e ".[dev]"`). Known issues found in the Phase 0 audit are listed in `docs/AUDIT.md`; this README will be regenerated from `scripts/run_results.py`.
+
 A rigorously implemented Python library for Black-Scholes-Merton option
 pricing, Greeks analytics, GBM Monte Carlo simulation, discrete delta-hedging,
 and implied volatility solving. Includes empirical analysis on real SPY data

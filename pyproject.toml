@@ -1,0 +1,55 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "bspricer"
+version = "0.9.0"
+description = "Black-Scholes-Merton pricing, Greeks, CRR/Monte Carlo cross-checks and a discrete delta-hedging simulator."
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "Tancrède Geli", email = "282603140+tancredeg@users.noreply.github.com" }]
+requires-python = ">=3.12"
+keywords = ["black-scholes", "delta-hedging", "options", "greeks", "quantitative-finance"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Office/Business :: Financial :: Investment",
+    "Typing :: Typed",
+]
+# Pinned to the minor release that the test suite and results were produced with.
+dependencies = [
+    "numpy~=2.5.3",
+    "scipy~=1.18.1",
+    "pandas~=3.0.6",
+    "matplotlib~=3.11.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.1.1",
+    "pytest-cov==7.1.0",
+    "ruff==0.16.10",
+    "mypy==2.4.0",
+    "pandas-stubs==3.0.5.260914",
+    "scipy-stubs==1.18.1.1",
+    "nbclient==0.11.0",
+    "nbformat==5.11.1",
+    "ipykernel==7.4.0",
+]
+
+[project.urls]
+Repository = "https://github.com/tancredeg/black-scholes-pricer"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+bspricer = ["py.typed"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = ["slow: convergence studies (deselect with -m 'not slow')"]

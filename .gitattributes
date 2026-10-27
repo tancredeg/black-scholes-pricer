@@ -1,2 +1,7 @@
-﻿black_scholes.html linguist-generated=true
-*.ipynb linguist-documentation=false
+# Keep byte-exact line endings so that data/sample/SHA256SUMS verifies on every OS
+*.csv -text
+SHA256SUMS -text
+results/** -text
+* text=auto eol=lf
+*.png binary
+*.ipynb linguist-documentation
