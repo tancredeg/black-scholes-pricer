@@ -4,10 +4,12 @@ All Greeks are raw partial derivatives in natural units:
 
 * ``delta`` :math:`= \partial V/\partial S`
 * ``gamma`` :math:`= \partial^2 V/\partial S^2`
-* ``theta`` :math:`= \partial V/\partial t` **per year** (calendar time t, so theta < 0 for a long vanilla
-  in most cases). Divide by 252 for "per trading day".
-* ``vega``  :math:`= \partial V/\partial \sigma` per unit of vol. Multiply by 0.01 for "per vol point".
-* ``rho``   :math:`= \partial V/\partial r` per unit of rate. Multiply by 0.0001 for "per basis point".
+* ``theta`` :math:`= \partial V/\partial t` **per year** (t is calendar time, so theta is
+  usually negative for a long vanilla). Divide by 252 for "per trading day".
+* ``vega``  :math:`= \partial V/\partial \sigma` per unit of vol. Multiply by 0.01 for
+  "per vol point".
+* ``rho``   :math:`= \partial V/\partial r` per unit of rate. Multiply by 0.0001 for
+  "per basis point".
 
 With :math:`\varphi` the standard normal density and :math:`\tau = T`:
 
@@ -16,7 +18,8 @@ With :math:`\varphi` the standard normal density and :math:`\tau = T`:
     \Gamma = \frac{e^{-q\tau}\varphi(d_1)}{S\sigma\sqrt{\tau}}, \quad
     \mathcal{V} = S e^{-q\tau}\sqrt{\tau}\,\varphi(d_1),
 
-    \Theta_C = -\frac{S e^{-q\tau}\varphi(d_1)\sigma}{2\sqrt{\tau}} - rKe^{-r\tau}N(d_2) + qSe^{-q\tau}N(d_1),
+    \Theta_C = -\frac{S e^{-q\tau}\varphi(d_1)\sigma}{2\sqrt{\tau}}
+        - rKe^{-r\tau}N(d_2) + qSe^{-q\tau}N(d_1),
 
     \rho_C = K\tau e^{-r\tau}N(d_2), \quad \rho_P = -K\tau e^{-r\tau}N(-d_2).
 
@@ -138,5 +141,7 @@ def bs_pde_residual(
     S_, K_, T_, r_, s_, q_ = _inputs(S, K, T, r, sigma, q)
     g = _bs_greeks(S_, K_, T_, r_, s_, q_, otype)
     value = _bs_price(S_, K_, T_, r_, s_, q_, otype)
-    residual = g["theta"] + 0.5 * s_**2 * S_**2 * g["gamma"] + (r_ - q_) * S_ * g["delta"] - r_ * value
+    residual = (
+        g["theta"] + 0.5 * s_**2 * S_**2 * g["gamma"] + (r_ - q_) * S_ * g["delta"] - r_ * value
+    )
     return to_output(np.asarray(residual, dtype=np.float64))

@@ -156,7 +156,11 @@ def delta_hedge(
     as_float_array("q", q)
     as_float_array("sigma_hedge", sigma_hedge, positive=True)
     as_float_array("cost", cost, nonnegative=True)
-    sig_p = sigma_hedge if sigma_price is None else float(as_float_array("sigma_price", sigma_price, positive=True))
+    sig_p = (
+        sigma_hedge
+        if sigma_price is None
+        else float(as_float_array("sigma_price", sigma_price, positive=True))
+    )
 
     n_paths, n_cols = spots.shape
     n_steps = n_cols - 1
@@ -191,6 +195,7 @@ def delta_hedge(
         cash = cash * growth + dividends
         compound = float(np.exp(r * (T - (k + 1) * dt)))
         last = k + 1 == n_steps
+        next_value: FloatArray | None
         if last:
             new_delta = np.zeros(n_paths)
             next_greeks = None
@@ -275,7 +280,13 @@ def variance_pnl(
             realized = (spots[:, k + 1] / s_now - 1.0) ** 2
         else:
             realized = np.full_like(s_now, sigma_realized**2 * dt)
-        out += np.exp(r * (T - (k + 1) * dt)) * 0.5 * gamma * s_now**2 * (sigma_hedge**2 * dt - realized)
+        out += (
+            np.exp(r * (T - (k + 1) * dt))
+            * 0.5
+            * gamma
+            * s_now**2
+            * (sigma_hedge**2 * dt - realized)
+        )
     return out
 
 
@@ -284,7 +295,8 @@ def kamal_derman_std(vega: float, sigma: float, n_steps: int) -> float:
 
     For an at-the-money option hedged ``n_steps`` times at the correct volatility,
 
-    .. math:: \operatorname{sd}(\text{P\&L}) \approx \sqrt{\pi/4}\;\frac{\sigma\,\mathcal V}{\sqrt N},
+    .. math::
+        \operatorname{sd}(\text{P\&L}) \approx \sqrt{\pi/4}\;\frac{\sigma\,\mathcal V}{\sqrt N},
 
     with :math:`\mathcal V` the Black-Scholes vega (per unit vol) at inception.
     """

@@ -50,9 +50,13 @@ def load_fred_series(path: str | Path) -> pd.Series:
     return series.astype(float)
 
 
+def _log_prices(prices: pd.Series) -> pd.Series:
+    return pd.Series(np.log(prices.to_numpy(dtype=np.float64)), index=prices.index)
+
+
 def log_returns(prices: pd.Series) -> pd.Series:
     """Daily log returns, first observation dropped."""
-    return np.log(prices / prices.shift(1)).dropna()
+    return _log_prices(prices).diff().dropna()
 
 
 def rolling_realized_vol(
@@ -71,7 +75,7 @@ def rolling_realized_vol(
     >>> rolling_realized_vol(prices, windows=[30]).columns.tolist()
     ['vol_30d']
     """
-    returns = np.log(prices / prices.shift(1))
+    returns = _log_prices(prices).diff()
     data = {
         f"vol_{w}d": returns.rolling(window=w).std(ddof=1) * np.sqrt(periods_per_year)
         for w in windows
@@ -80,7 +84,11 @@ def rolling_realized_vol(
 
 
 def realized_vol(prices: pd.Series | np.ndarray, periods_per_year: int = TRADING_DAYS) -> float:
-    r"""Zero-mean annualised realised volatility :math:`\sqrt{\tfrac{252}{n}\sum_i x_i^2}` of a price path."""
+    r"""Zero-mean annualised realised vol of a price path.
+
+    .. math:: \hat\sigma = \sqrt{\tfrac{252}{n}\textstyle\sum_{i=1}^{n} x_i^2},
+        \quad x_i = \ln(S_i/S_{i-1})
+    """
     values = np.asarray(prices, dtype=np.float64)
     returns = np.diff(np.log(values))
     if returns.size == 0:

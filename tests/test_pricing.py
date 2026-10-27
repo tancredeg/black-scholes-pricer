@@ -18,7 +18,9 @@ K = STRIKE
 def test_matches_independent_reference(S, T, r, sigma, q):
     for opt in OPTION_TYPES:
         expected = ref.price(S, K, T, r, sigma, opt == "call", q)
-        assert bs.bs_price(S, K, T, r, sigma, opt, q) == pytest.approx(expected, rel=1e-11, abs=1e-11)
+        assert bs.bs_price(S, K, T, r, sigma, opt, q) == pytest.approx(
+            expected, rel=1e-11, abs=1e-11
+        )
 
 
 @pytest.mark.parametrize(("S", "T", "r", "sigma", "q"), GRID)

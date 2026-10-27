@@ -1,4 +1,4 @@
-"""bspricer — Black-Scholes-Merton pricing, Greeks, numerical cross-checks and discrete delta hedging.
+"""bspricer — Black-Scholes-Merton pricing, Greeks, numerical checks and discrete delta hedging.
 
 Conventions: ``T`` in years, ``sigma`` per unit, ``r`` and ``q`` continuously
 compounded; Greeks are raw partial derivatives (theta per year, vega per unit

@@ -2,8 +2,9 @@ r"""Geometric Brownian motion simulation and Monte Carlo pricing.
 
 Paths use the exact log-normal transition
 
-.. math:: S_{t+\Delta t} = S_t \exp\big[(\mu - \tfrac12\sigma^2)\Delta t + \sigma\sqrt{\Delta t}\,Z\big],
-          \quad Z \sim \mathcal N(0, 1),
+.. math::
+    S_{t+\Delta t} = S_t \exp\big[(\mu - \tfrac12\sigma^2)\Delta t
+        + \sigma\sqrt{\Delta t}\,Z\big], \quad Z \sim \mathcal N(0, 1),
 
 so the marginals are exact for any step size (no Euler bias). ``mu`` is the
 drift of the *price*: use the real-world drift for hedging experiments and

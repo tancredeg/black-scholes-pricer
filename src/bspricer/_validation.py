@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Literal, TypeAlias
+from typing import Literal
 
 import numpy as np
 from numpy.typing import ArrayLike, NDArray
 
-OptionType: TypeAlias = Literal["call", "put"]
-FloatArray: TypeAlias = NDArray[np.float64]
+type OptionType = Literal["call", "put"]
+type FloatArray = NDArray[np.float64]
 
 
 def check_option_type(option_type: str) -> OptionType:

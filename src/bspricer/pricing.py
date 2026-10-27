@@ -29,7 +29,13 @@ import numpy as np
 from numpy.typing import ArrayLike
 from scipy.special import ndtr
 
-from bspricer._validation import FloatArray, OptionType, as_float_array, check_option_type, to_output
+from bspricer._validation import (
+    FloatArray,
+    OptionType,
+    as_float_array,
+    check_option_type,
+    to_output,
+)
 
 __all__ = ["OptionType", "bs_price", "d1_d2", "forward", "no_arbitrage_bounds"]
 
@@ -64,7 +70,9 @@ def _d1_d2(
     degenerate = total_vol == 0.0
     safe_vol = np.where(degenerate, 1.0, total_vol)
     d1 = (log_fwd_moneyness + 0.5 * total_vol**2) / safe_vol
-    limit = np.where(log_fwd_moneyness > 0.0, np.inf, np.where(log_fwd_moneyness < 0.0, -np.inf, 0.0))
+    limit = np.where(
+        log_fwd_moneyness > 0.0, np.inf, np.where(log_fwd_moneyness < 0.0, -np.inf, 0.0)
+    )
     d1 = np.where(degenerate, limit, d1)
     d2 = d1 - total_vol
     return d1, d2
@@ -81,7 +89,8 @@ def d1_d2(
     r"""Black-Scholes-Merton :math:`d_1` and :math:`d_2`.
 
     .. math::
-        d_1 = \frac{\ln(S/K) + (r - q + \sigma^2/2)T}{\sigma\sqrt{T}}, \quad d_2 = d_1 - \sigma\sqrt{T}
+        d_1 = \frac{\ln(S/K) + (r - q + \sigma^2/2)T}{\sigma\sqrt{T}},
+        \quad d_2 = d_1 - \sigma\sqrt{T}
 
     For ``sigma * sqrt(T) == 0`` returns ``(+inf, +inf)`` if :math:`S e^{(r-q)T} > K`,
     ``(-inf, -inf)`` if below and ``(0, 0)`` at the forward.

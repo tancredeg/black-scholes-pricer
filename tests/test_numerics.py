@@ -41,7 +41,9 @@ def test_gbm_antithetic_pairs():
 @pytest.mark.parametrize("opt", ["call", "put"])
 @pytest.mark.parametrize("antithetic", [False, True])
 def test_mc_within_four_standard_errors(opt, antithetic):
-    est = bs.mc_price(S, 110.0, T, R, SIGMA, 200_000, seed=42, option_type=opt, q=0.02, antithetic=antithetic)
+    est = bs.mc_price(
+        S, 110.0, T, R, SIGMA, 200_000, seed=42, option_type=opt, q=0.02, antithetic=antithetic
+    )
     exact = bs.bs_price(S, 110.0, T, R, SIGMA, opt, 0.02)
     assert abs(est.price - exact) < 4 * est.std_error
 
@@ -58,7 +60,14 @@ def test_mc_error_decays_like_inverse_sqrt_paths():
     exact = bs.bs_price(S, K, T, R, SIGMA)
     sizes = np.array([1_000, 4_000, 16_000, 64_000])
     rmse = [
-        math.sqrt(np.mean([(bs.mc_price(S, K, T, R, SIGMA, int(n), seed=s).price - exact) ** 2 for s in range(200)]))
+        math.sqrt(
+            np.mean(
+                [
+                    (bs.mc_price(S, K, T, R, SIGMA, int(n), seed=s).price - exact) ** 2
+                    for s in range(200)
+                ]
+            )
+        )
         for n in sizes
     ]
     slope = np.polyfit(np.log(sizes), np.log(rmse), 1)[0]
@@ -78,12 +87,16 @@ def test_crr_converges_at_order_one_at_the_money():
     assert -1.1 < slope < -0.9
 
 
-@pytest.mark.parametrize(("strike", "opt", "q"), [(110.0, "put", 0.02), (90.0, "put", 0.03), (120.0, "call", 0.0)])
+@pytest.mark.parametrize(
+    ("strike", "opt", "q"), [(110.0, "put", 0.02), (90.0, "put", 0.03), (120.0, "call", 0.0)]
+)
 def test_crr_error_bounded_by_c_over_n_away_from_the_money(strike, opt, q):
     """Away from the money the error oscillates with n, but stays below 2 S sigma^2 T / n here."""
     exact = bs.bs_price(S, strike, T, R, SIGMA, opt, q)
     for n in (100, 400, 1600):
-        assert abs(bs.crr_price(S, strike, T, R, SIGMA, n, opt, q) - exact) < 2 * S * SIGMA**2 * T / n
+        assert (
+            abs(bs.crr_price(S, strike, T, R, SIGMA, n, opt, q) - exact) < 2 * S * SIGMA**2 * T / n
+        )
 
 
 def test_crr_american_options():
@@ -92,7 +105,9 @@ def test_crr_american_options():
     assert amer_put > euro_put + 0.1  # early-exercise premium with r > 0
     euro_call = bs.crr_price(S, K, T, R, SIGMA, 1000, "call")
     amer_call = bs.crr_price(S, K, T, R, SIGMA, 1000, "call", american=True)
-    assert amer_call == pytest.approx(euro_call, abs=1e-12)  # never optimal to exercise early if q = 0
+    assert amer_call == pytest.approx(
+        euro_call, abs=1e-12
+    )  # never optimal to exercise early if q = 0
 
 
 def test_crr_rejects_invalid_trees():

@@ -67,10 +67,10 @@ def crr_price(
     disc = float(np.exp(-r * dt))
 
     exponents = 2.0 * np.arange(n_steps + 1) - n_steps  # S u^j d^(n-j) = S u^(2j-n)
-    values = _payoff(S * u**exponents, K, otype)
+    values = _payoff(np.asarray(S * u**exponents, dtype=np.float64), K, otype)
     for i in range(n_steps - 1, -1, -1):
         values = disc * (p * values[1:] + (1.0 - p) * values[:-1])
         if american:
-            spots = S * u ** (2.0 * np.arange(i + 1) - i)
+            spots = np.asarray(S * u ** (2.0 * np.arange(i + 1) - i), dtype=np.float64)
             values = np.maximum(values, _payoff(spots, K, otype))
     return float(values[0])

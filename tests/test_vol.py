@@ -26,7 +26,9 @@ def test_frozen_files_match_their_checksums(data_dir):
 
 def test_spy_series_integrity(spy):
     assert len(spy) == 1257
-    assert spy.index[0] == pd.Timestamp("2020-01-02") and spy.index[-1] == pd.Timestamp("2024-12-30")
+    assert spy.index[0] == pd.Timestamp("2020-01-02") and spy.index[-1] == pd.Timestamp(
+        "2024-12-30"
+    )
     assert spy.index.is_monotonic_increasing and not spy.index.has_duplicates
     assert np.isfinite(spy.to_numpy()).all() and (spy > 0).all()
 
@@ -36,7 +38,9 @@ def test_fred_loaders_drop_holidays(data_dir):
     tbill = bs.load_fred_series(data_dir / "DTB3_2020_2024.csv")
     assert not vix.isna().any() and not tbill.isna().any()
     assert vix.loc["2020-04-08"] == 43.35  # implied vol on the day realised 30d vol peaked
-    assert tbill.min() == -0.05 and tbill.idxmin() == pd.Timestamp("2020-03-26")  # briefly negative in March 2020
+    assert tbill.min() == -0.05 and tbill.idxmin() == pd.Timestamp(
+        "2020-03-26"
+    )  # briefly negative in March 2020
     assert tbill.max() == 5.36
 
 

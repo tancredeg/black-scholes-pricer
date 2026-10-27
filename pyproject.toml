@@ -50,6 +50,30 @@ where = ["src"]
 bspricer = ["py.typed"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests"]
-addopts = "-ra --strict-markers"
+testpaths = ["tests", "src/bspricer"]
+addopts = "-ra --strict-markers --doctest-modules"
 markers = ["slow: convergence studies (deselect with -m 'not slow')"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+extend-exclude = ["docs/audit"]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "NPY", "SIM", "RUF"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["E501"]
+
+[tool.mypy]
+strict = true
+files = ["src"]
+python_version = "3.12"
+
+[tool.coverage.run]
+source = ["bspricer"]
+branch = true
+
+[tool.coverage.report]
+fail_under = 90
+show_missing = true

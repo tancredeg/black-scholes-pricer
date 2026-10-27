@@ -24,7 +24,9 @@ def test_matches_scalar_reference(opt):
     """Vectorised engine == independent scalar loop (dividends and costs included)."""
     sample = bs.simulate_gbm(S0, MU - 0.02, SIGMA, T, 21, 40, seed=3)
     res = bs.delta_hedge(sample, 105.0, T, R, 0.25, opt, q=0.02, cost=5e-4)
-    expected = [ref.hedge_path(list(p), 105.0, T, R, 0.25, opt == "call", 0.02, 5e-4) for p in sample]
+    expected = [
+        ref.hedge_path(list(p), 105.0, T, R, 0.25, opt == "call", 0.02, 5e-4) for p in sample
+    ]
     np.testing.assert_allclose(res.pnl, expected, rtol=0, atol=1e-9)
 
 
@@ -59,7 +61,9 @@ def test_call_and_put_hedges_coincide_without_dividends(paths):
 
 
 def test_decomposition_is_exact(paths):
-    res = bs.delta_hedge(paths[:2_000], 95.0, T, R, 0.18, "put", q=0.01, sigma_price=0.22, cost=2e-4, decompose=True)
+    res = bs.delta_hedge(
+        paths[:2_000], 95.0, T, R, 0.18, "put", q=0.01, sigma_price=0.22, cost=2e-4, decompose=True
+    )
     assert res.decomposition is not None
     np.testing.assert_allclose(res.decomposition.total(), res.pnl, atol=1e-10)
     np.testing.assert_allclose(res.decomposition.costs, res.costs)
@@ -103,7 +107,10 @@ def test_hedging_at_realised_vol_locks_in_the_vol_spread():
     fine = bs.simulate_gbm(S0, MU, SIGMA, T, 504, 10_000, seed=12)
     target = (bs.bs_price(S0, K, T, R, sell) - bs.bs_price(S0, K, T, R, SIGMA)) * math.exp(R * T)
     implied = {n: bs.delta_hedge(fine[:, :: 504 // n], K, T, R, sell) for n in (126, 504)}
-    realised = {n: bs.delta_hedge(fine[:, :: 504 // n], K, T, R, SIGMA, sigma_price=sell) for n in (126, 504)}
+    realised = {
+        n: bs.delta_hedge(fine[:, :: 504 // n], K, T, R, SIGMA, sigma_price=sell)
+        for n in (126, 504)
+    }
     assert abs(realised[504].mean - target) < 4 * realised[504].std_error
     assert realised[504].std < 0.5 * implied[504].std
     assert 0.4 < realised[504].std / realised[126].std < 0.6
@@ -124,7 +131,9 @@ def test_vol_mismatch_pnl_is_explained_by_the_gamma_weighted_variance_gap(paths,
 
 def test_kamal_derman_formula():
     vega = 20.0
-    assert bs.kamal_derman_std(vega, 0.2, 100) == pytest.approx(math.sqrt(math.pi / 4) * 0.2 * vega / 10)
+    assert bs.kamal_derman_std(vega, 0.2, 100) == pytest.approx(
+        math.sqrt(math.pi / 4) * 0.2 * vega / 10
+    )
     with pytest.raises(ValueError):
         bs.kamal_derman_std(vega, 0.2, 0)
 

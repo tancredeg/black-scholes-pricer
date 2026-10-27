@@ -17,7 +17,9 @@ def norm_pdf(x: float) -> float:
     return math.exp(-0.5 * x * x) / math.sqrt(2.0 * math.pi)
 
 
-def price(S: float, K: float, T: float, r: float, sigma: float, call: bool, q: float = 0.0) -> float:
+def price(
+    S: float, K: float, T: float, r: float, sigma: float, call: bool, q: float = 0.0
+) -> float:
     """Black-Scholes-Merton price (Hull 2022, eq. 17.4 and 17.5)."""
     v = sigma * math.sqrt(T)
     d1 = (math.log(S / K) + (r - q) * T) / v + 0.5 * v
@@ -27,7 +29,9 @@ def price(S: float, K: float, T: float, r: float, sigma: float, call: bool, q: f
     return K * math.exp(-r * T) * norm_cdf(-d2) - S * math.exp(-q * T) * norm_cdf(-d1)
 
 
-def greeks(S: float, K: float, T: float, r: float, sigma: float, call: bool, q: float = 0.0) -> dict[str, float]:
+def greeks(
+    S: float, K: float, T: float, r: float, sigma: float, call: bool, q: float = 0.0
+) -> dict[str, float]:
     """Delta, gamma, theta (per year), vega, rho — textbook formulas (Hull 2022, ch. 19)."""
     v = sigma * math.sqrt(T)
     d1 = (math.log(S / K) + (r - q) * T) / v + 0.5 * v
