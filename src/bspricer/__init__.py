@@ -18,12 +18,20 @@ from bspricer.implied_vol import ImpliedVolError, bs_implied_vol
 from bspricer.montecarlo import MCEstimate, mc_price, simulate_gbm
 from bspricer.pricing import OptionType, bs_price, d1_d2, forward, no_arbitrage_bounds
 from bspricer.trees import crr_price
-from bspricer.core import rolling_realized_vol
+from bspricer.vol import (
+    TRADING_DAYS,
+    load_fred_series,
+    load_price_series,
+    log_returns,
+    realized_vol,
+    rolling_realized_vol,
+)
 
 __version__ = "0.9.0"
 
 __all__ = [
     "GREEK_NAMES",
+    "TRADING_DAYS",
     "HedgeResult",
     "ImpliedVolError",
     "MCEstimate",
@@ -39,8 +47,12 @@ __all__ = [
     "delta_hedge",
     "forward",
     "kamal_derman_std",
+    "load_fred_series",
+    "load_price_series",
+    "log_returns",
     "mc_price",
     "no_arbitrage_bounds",
+    "realized_vol",
     "rolling_realized_vol",
     "simulate_gbm",
     "variance_pnl",
