@@ -6,6 +6,7 @@ vol, rho per unit rate). The hedging engine is written from the point of view
 of the option seller.
 """
 
+from bspricer.backtest import align_market_data, discount_yield_to_continuous, short_vol_backtest
 from bspricer.greeks import GREEK_NAMES, bs_greeks, bs_pde_residual
 from bspricer.hedging import (
     HedgeResult,
@@ -38,6 +39,7 @@ __all__ = [
     "OptionType",
     "PnLDecomposition",
     "__version__",
+    "align_market_data",
     "bs_greeks",
     "bs_implied_vol",
     "bs_pde_residual",
@@ -45,6 +47,7 @@ __all__ = [
     "crr_price",
     "d1_d2",
     "delta_hedge",
+    "discount_yield_to_continuous",
     "forward",
     "kamal_derman_std",
     "load_fred_series",
@@ -54,6 +57,7 @@ __all__ = [
     "no_arbitrage_bounds",
     "realized_vol",
     "rolling_realized_vol",
+    "short_vol_backtest",
     "simulate_gbm",
     "variance_pnl",
 ]
