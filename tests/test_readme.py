@@ -98,4 +98,6 @@ def test_monte_carlo_results_are_reproduced_on_a_smaller_sample(summary, tmp_pat
     # R4 uses real data only: identical in both modes up to floating-point noise across platforms
     assert quick["r4"].keys() == full["r4"].keys()
     for key, value in full["r4"].items():
-        assert quick["r4"][key] == (pytest.approx(value, rel=1e-9) if isinstance(value, float) else value)
+        assert quick["r4"][key] == (
+            pytest.approx(value, rel=1e-9) if isinstance(value, float) else value
+        )
