@@ -30,10 +30,9 @@ variance and the realised variance, weighted by dollar gamma
 References
 ----------
 Black, F. and Scholes, M. (1973), *Journal of Political Economy*, 81(3), 637-654.
-Kamal, M. and Derman, E. (1999). When You Cannot Hedge Continuously: The
-Corrections of Black-Scholes. *Risk*, 12(1), 82-85.
-Ahmad, R. and Wilmott, P. (2005). Which Free Lunch Would You Like Today, Sir?
-Delta Hedging, Volatility Arbitrage and Optimal Portfolios. *Wilmott Magazine*, 64-79.
+Kamal, M. and Derman, E. (1999). Correcting Black-Scholes. *Risk*, 12(1), 82-85.
+Ahmad, R. and Wilmott, P. (2005). Which Free Lunch Would You Like Today, Sir? Delta
+Hedging, Volatility Arbitrage and Optimal Portfolios. *Wilmott Magazine*.
 """
 
 from __future__ import annotations
