@@ -66,6 +66,7 @@ select = ["E", "F", "W", "I", "B", "UP", "NPY", "SIM", "RUF"]
 "tests/*" = ["E501"]
 # Report scripts build long f-strings of README prose with mathematical symbols (σ, −, √).
 "scripts/*" = ["E501", "RUF001"]
+"notebooks/*" = ["E501", "RUF001"]
 
 [tool.mypy]
 strict = true
