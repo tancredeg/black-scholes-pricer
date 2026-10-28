@@ -28,7 +28,7 @@ from bspricer.vol import (
     rolling_realized_vol,
 )
 
-__version__ = "0.9.0"
+__version__ = "1.0.0"
 
 __all__ = [
     "GREEK_NAMES",

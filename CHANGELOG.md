@@ -1,5 +1,46 @@
 # Changelog
 
+## v1.0.0 — 2026-10-28
+
+Rewrite after the Phase 0 audit (`docs/AUDIT.md`, in French). The public API changed; v0.2.0
+remains available through its tag-less commit `6339479`.
+
+### Fixed
+* **σ → 0 limit** (audit C3): the degenerate branch used `S >= K` instead of the forward
+  moneyness and returned wrong, even negative, prices below σ = 1e-9.
+* **Dividends in the hedge** (C4): `q · Δ · S · dt` is now credited to the cash account; the old
+  engine was biased by −0.29 on a 30-day ATM call on a 310 spot (t = −31.7) at q = 1.3 %.
+* **Time grid** (M1): the hedging step is `T / n_steps`; the separate `dt` argument, which could
+  silently disagree with the paths, is gone.
+* **Implied vol** (M2): raises `ImpliedVolError` when the time value is below the price resolution
+  instead of returning the lower bracket.
+* **Input validation** (M3): S, K > 0, T, σ ≥ 0, finite values, exact `"call"` / `"put"`.
+* **Theta units** (C1): every Greek is now a raw partial derivative (theta per year), which removes
+  the factor-252 error of the old gamma / theta decomposition.
+* README and notebook figures that did not match the code (M4), and a non-reproduced number in
+  the removed `NOTEBOOK_PATCHES.md` (M9).
+
+### Added
+* Installable package `src/bspricer` (`pip install -e .`), pinned dependencies, MIT license.
+* Exact P&L attribution of the hedge (initial mark, gamma, theta, carry, residual, costs) (C2),
+  proportional transaction costs, separate selling and hedging volatilities, `variance_pnl`
+  (dollar gamma × variance gap) and `kamal_derman_std`.
+* `crr_price` (European and American CRR tree) and `mc_price` (exact sampling, antithetic option).
+* `bspricer.backtest`: monthly short ATM option on real SPY closes, sold at the VIX.
+* Frozen public data in `data/sample/` (SPY, VIX, 3-month T-bill) with SHA256 checksums.
+* `scripts/run_results.py`: four results (replication error vs N, optimal rebalancing with costs,
+  misspecified volatility, SPY backtest) written to `results/`, and the README result blocks
+  generated from them.
+* Test suite: identities, no-arbitrage bounds, limits, finite differences, PDE, CRR and Monte Carlo
+  convergence orders, hedging oracle and attribution, regression on the frozen data, README and
+  results consistency, notebook execution. ruff, mypy --strict and CI on Python 3.12–3.14.
+* `notebooks/demo.ipynb`, an offline guided tour.
+
+### Removed
+* `bs_pricer.py` (split into modules), `bs_greeks_vec` (use `bs_greeks` with arrays),
+  `delta_hedge_single_path` / `run_hedging_experiment(_vec)` (use `delta_hedge`),
+  `requirements.txt`, `conftest.py`, `NOTEBOOK_PATCHES.md`, the legacy notebook and its HTML export.
+
 ## v0.2.0 — Post-audit improvements
 
 ### Added

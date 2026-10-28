@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "bspricer"
-version = "0.9.0"
+version = "1.0.0"
 description = "Black-Scholes-Merton pricing, Greeks, CRR/Monte Carlo cross-checks and a discrete delta-hedging simulator."
 readme = "README.md"
 license = "MIT"
