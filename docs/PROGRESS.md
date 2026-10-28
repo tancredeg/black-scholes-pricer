@@ -10,7 +10,7 @@
 | 3 Qualité, CI | fait : ruff, mypy --strict, CI sur Python 3.12 / 3.13 / 3.14 | `.github/workflows/ci.yml`, badge du README |
 | 4 Résultats | fait : R1–R4 | `scripts/run_results.py`, `results/` |
 | 5 README | fait : blocs de résultats générés et vérifiés par test | `README.md`, `tests/test_readme.py` |
-| 6 Livraison | notebook, tag `v1.0.0`, notes de version faits ; **épinglage du repo à faire à la main** | `notebooks/demo.ipynb`, onglet Releases |
+| 6 Livraison | notebook fait ; **tag `v1.0.0`, release et épinglage à faire à la main** (le push du tag et la création de la release ont été refusés depuis la session) | `notebooks/demo.ipynb` |
 
 ## Décisions D1–D6 (tranchées le 2026-10-28, séance autonome)
 
@@ -58,6 +58,8 @@
 
 ## Reste à faire
 
-1. Épingler le repo sur le profil GitHub (réglage du profil, non modifiable par Claude).
-2. Mettre à jour la description du repo, qui affirme encore « 2000+ pytest assertions » et une couverture sur données SPY réelles au sens de la v0.2 (proposition dans le rapport de séance).
-3. Optionnel v1.1 : delta sticky-strike contre sticky-delta sur un smile synthétique ; vol implicite ATM réelle à la place du VIX si une source publique est disponible.
+1. Créer le tag et la release sur le commit `39163eb` (« Release v1.0.0 ») :
+   `git tag -a v1.0.0 39163eb -m "bspricer v1.0.0" && git push origin v1.0.0`, puis la release GitHub avec les notes fournies en fin de séance.
+2. Épingler le repo sur le profil GitHub (réglage du profil, non modifiable par Claude).
+3. Mettre à jour la description du repo, qui affirme encore « 2000+ pytest assertions » et une couverture sur données SPY réelles au sens de la v0.2 (proposition dans le rapport de séance).
+4. Optionnel v1.1 : delta sticky-strike contre sticky-delta sur un smile synthétique ; vol implicite ATM réelle à la place du VIX si une source publique est disponible.
