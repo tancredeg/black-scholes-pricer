@@ -1,0 +1,407 @@
+{
+  "bspricer_version": "0.9.0",
+  "config": {
+    "K": 100.0,
+    "S0": 100.0,
+    "T": 0.25,
+    "mu": 0.07,
+    "n_fine": 1008,
+    "n_paths": 20000,
+    "r": 0.03,
+    "seed": 20261028,
+    "sigma": 0.2,
+    "sigma_rich": 0.24
+  },
+  "r1": {
+    "coarsest_n": 4,
+    "coarsest_ratio_kd": 0.9274864135670272,
+    "daily_ratio_kd": 0.9960348788092181,
+    "daily_sd": 0.44021653674152167,
+    "daily_sd_pct_premium": 10.102225620341896,
+    "finest_n": 1008,
+    "finest_sd_pct_premium": 2.5600065406030095,
+    "independent_mean": 0.0008844446687139434,
+    "independent_mean_t": 0.9120485832639044,
+    "independent_n_paths": 200000,
+    "max_abs_mean_t": 2.9792578448238576,
+    "n_paths": 20000,
+    "premium": 4.3576193334575635,
+    "slope": -0.49609477045340084,
+    "slope_all": -0.48544606671601964,
+    "slope_all_ci95": [
+      -0.4883863468100441,
+      -0.482467741829279
+    ],
+    "slope_ci95": [
+      -0.5017311945024182,
+      -0.4901533385222265
+    ],
+    "vega": 19.791884347237477
+  },
+  "r1_table": [
+    {
+      "kamal_derman_sd": 1.7540100813968835,
+      "n_rebalances": 4,
+      "pnl_mean": -0.0042047962044854635,
+      "pnl_mean_se": 0.011503358212923292,
+      "pnl_sd": 1.626820519755205,
+      "pnl_sd_pct_premium": 37.33278185326024,
+      "rebalances_per_day": 0.06349206349206349,
+      "sd_over_kamal_derman": 0.9274864135670272
+    },
+    {
+      "kamal_derman_sd": 1.3259069921360895,
+      "n_rebalances": 7,
+      "pnl_mean": -0.011544204509675391,
+      "pnl_mean_se": 0.008867289780031035,
+      "pnl_sd": 1.2540241468412228,
+      "pnl_sd_pct_premium": 28.777735063108743,
+      "rebalances_per_day": 0.1111111111111111,
+      "sd_over_kamal_derman": 0.9457859067632937
+    },
+    {
+      "kamal_derman_sd": 1.169340054264589,
+      "n_rebalances": 9,
+      "pnl_mean": 0.0031561617083631557,
+      "pnl_mean_se": 0.007835949952558532,
+      "pnl_sd": 1.1081706696985087,
+      "pnl_sd_pct_premium": 25.430644232506378,
+      "rebalances_per_day": 0.14285714285714285,
+      "sd_over_kamal_derman": 0.9476889683689571
+    },
+    {
+      "kamal_derman_sd": 1.0126781926558082,
+      "n_rebalances": 12,
+      "pnl_mean": -0.002334601695611591,
+      "pnl_mean_se": 0.006870760391871906,
+      "pnl_sd": 0.9716722530001131,
+      "pnl_sd_pct_premium": 22.29823623049555,
+      "rebalances_per_day": 0.19047619047619047,
+      "sd_over_kamal_derman": 0.9595074329109876
+    },
+    {
+      "kamal_derman_sd": 0.7655127588301784,
+      "n_rebalances": 21,
+      "pnl_mean": -0.0026821157539308037,
+      "pnl_mean_se": 0.005265988356103231,
+      "pnl_sd": 0.744723215249999,
+      "pnl_sd_pct_premium": 17.0901393229109,
+      "rebalances_per_day": 0.3333333333333333,
+      "sd_over_kamal_derman": 0.9728423290920074
+    },
+    {
+      "kamal_derman_sd": 0.5412992628536413,
+      "n_rebalances": 42,
+      "pnl_mean": -0.006983187070345208,
+      "pnl_mean_se": 0.003739486027431479,
+      "pnl_sd": 0.5288431856298286,
+      "pnl_sd_pct_premium": 12.136057446996332,
+      "rebalances_per_day": 0.6666666666666666,
+      "sd_over_kamal_derman": 0.9769885568324141
+    },
+    {
+      "kamal_derman_sd": 0.44196899737869655,
+      "n_rebalances": 63,
+      "pnl_mean": -0.006125252123998701,
+      "pnl_mean_se": 0.0031128009832038692,
+      "pnl_sd": 0.44021653674152167,
+      "pnl_sd_pct_premium": 10.102225620341896,
+      "rebalances_per_day": 1.0,
+      "sd_over_kamal_derman": 0.9960348788092181
+    },
+    {
+      "kamal_derman_sd": 0.31251927512069577,
+      "n_rebalances": 126,
+      "pnl_mean": -0.004104194645845435,
+      "pnl_mean_se": 0.0022049337377104614,
+      "pnl_sd": 0.3118247196004135,
+      "pnl_sd_pct_premium": 7.155850379271093,
+      "rebalances_per_day": 2.0,
+      "sd_over_kamal_derman": 0.9977775594160904
+    },
+    {
+      "kamal_derman_sd": 0.22098449868934827,
+      "n_rebalances": 252,
+      "pnl_mean": -0.00467815355582349,
+      "pnl_mean_se": 0.00157024124781656,
+      "pnl_sd": 0.22206564688598315,
+      "pnl_sd_pct_premium": 5.09603133942828,
+      "rebalances_per_day": 4.0,
+      "sd_over_kamal_derman": 1.0048924164502357
+    },
+    {
+      "kamal_derman_sd": 0.15625963756034789,
+      "n_rebalances": 504,
+      "pnl_mean": -0.0024274623673572887,
+      "pnl_mean_se": 0.0011024361716190137,
+      "pnl_sd": 0.1559080185554282,
+      "pnl_sd_pct_premium": 3.577825565403911,
+      "rebalances_per_day": 8.0,
+      "sd_over_kamal_derman": 0.9977497771631277
+    },
+    {
+      "kamal_derman_sd": 0.11049224934467414,
+      "n_rebalances": 1008,
+      "pnl_mean": -0.0006781158162877307,
+      "pnl_mean_se": 0.0007888153735698977,
+      "pnl_sd": 0.11155533995109489,
+      "pnl_sd_pct_premium": 2.5600065406030095,
+      "rebalances_per_day": 16.0,
+      "sd_over_kamal_derman": 1.0096214043313074
+    }
+  ],
+  "r2": {
+    "a": 12.250354637493338,
+    "b": 32.20273509708468,
+    "fixed_turnover": 108.84058766151126,
+    "grid": [
+      4,
+      6,
+      7,
+      8,
+      9,
+      12,
+      14,
+      16,
+      18,
+      21,
+      24,
+      28,
+      36,
+      42,
+      48,
+      56,
+      63,
+      72,
+      84,
+      112,
+      126,
+      144,
+      168,
+      252,
+      336,
+      504,
+      1008
+    ],
+    "initial_trade_notional": 54.97382248301129,
+    "n_star_cost_exponent": -1.0757937090717538,
+    "optimum": [
+      {
+        "at_grid_edge": true,
+        "cost_bp": 1,
+        "mean_cost_at_n_star": 0.11266421182801485,
+        "n_star": 1008,
+        "n_star_theory": 1033.8989682217173,
+        "rmse_at_n_star": 0.1645312485211256,
+        "rmse_daily": 0.4436179119114514
+      },
+      {
+        "at_grid_edge": false,
+        "cost_bp": 2,
+        "mean_cost_at_n_star": 0.16612035102693873,
+        "n_star": 504,
+        "n_star_theory": 506.7284687192965,
+        "rmse_at_n_star": 0.23767468032555433,
+        "rmse_daily": 0.45017849799654
+      },
+      {
+        "at_grid_edge": false,
+        "cost_bp": 5,
+        "mean_cost_at_n_star": 0.26376800924867344,
+        "n_star": 168,
+        "n_star_theory": 195.05182329252227,
+        "rmse_at_n_star": 0.39065826896260186,
+        "rmse_daily": 0.48740598527284446
+      },
+      {
+        "at_grid_edge": false,
+        "cost_bp": 10,
+        "mean_cost_at_n_star": 0.40588741843047116,
+        "n_star": 84,
+        "n_star_theory": 93.5639404524237,
+        "rmse_at_n_star": 0.5765481779644794,
+        "rmse_daily": 0.5945131484577999
+      },
+      {
+        "at_grid_edge": false,
+        "cost_bp": 20,
+        "mean_cost_at_n_star": 0.6393362831432899,
+        "n_star": 42,
+        "n_star_theory": 44.252729299797785,
+        "rmse_at_n_star": 0.8663433419184136,
+        "rmse_daily": 0.8953288957192002
+      }
+    ],
+    "turnover_fit_max_rel_error": 0.044333219204151654
+  },
+  "r3": {
+    "bucket_mean_far": 0.6864403574461274,
+    "bucket_mean_near_strike": 1.2924261006742386,
+    "bucket_n": 4405,
+    "bucket_p5": 0.2572512814643348,
+    "bucket_p95": 1.4722787231466243,
+    "max_abs_mean_minus_predicted_in_se": 1.9677622042171998,
+    "proxy_intercept": -0.013038320123363808,
+    "proxy_slope": 1.020444461335063,
+    "r2_dollar_gamma_proxy": 0.974070075852772,
+    "r2_raw_variance_gap": 0.4901569419101372,
+    "sigma_rich": 0.24
+  },
+  "r3_choice": [
+    {
+      "hedge_vol": "implied",
+      "n_rebalances": 63,
+      "pnl_mean": 0.7928302203544486,
+      "pnl_sd": 0.515033164636656,
+      "prob_loss": 0.03525,
+      "sigma_hedge": 0.24,
+      "target_edge": 0.7977964691568735
+    },
+    {
+      "hedge_vol": "implied",
+      "n_rebalances": 1008,
+      "pnl_mean": 0.7977859067273877,
+      "pnl_sd": 0.29220961642600307,
+      "prob_loss": 0.0,
+      "sigma_hedge": 0.24,
+      "target_edge": 0.7977964691568735
+    },
+    {
+      "hedge_vol": "realised",
+      "n_rebalances": 63,
+      "pnl_mean": 0.7916712170328706,
+      "pnl_sd": 0.44021653674152117,
+      "prob_loss": 0.04015,
+      "sigma_hedge": 0.2,
+      "target_edge": 0.7977964691568735
+    },
+    {
+      "hedge_vol": "realised",
+      "n_rebalances": 1008,
+      "pnl_mean": 0.7971183533405232,
+      "pnl_sd": 0.11155533995109537,
+      "prob_loss": 0.0,
+      "sigma_hedge": 0.2,
+      "target_edge": 0.7977964691568735
+    }
+  ],
+  "r3_table": [
+    {
+      "pnl_mean": -1.203173930793592,
+      "pnl_mean_se": 0.004913487199793346,
+      "pnl_sd": 0.6948720236494351,
+      "predicted_mean": -1.198902646818561,
+      "premium_edge": -1.1954152451689806,
+      "prob_profit": 0.0011,
+      "sigma_implied": 0.14
+    },
+    {
+      "pnl_mean": -0.8045264524403936,
+      "pnl_mean_se": 0.003931604144303338,
+      "pnl_sd": 0.5560127902756048,
+      "predicted_mean": -0.7988624969232531,
+      "premium_edge": -0.7972606685727679,
+      "prob_profit": 0.0229,
+      "sigma_implied": 0.16
+    },
+    {
+      "pnl_mean": -0.40544521053822274,
+      "pnl_mean_se": 0.003319571465306394,
+      "pnl_sd": 0.4694582987503031,
+      "predicted_mean": -0.39921161123485255,
+      "premium_edge": -0.3987412006519754,
+      "prob_profit": 0.16335,
+      "sigma_implied": 0.18
+    },
+    {
+      "pnl_mean": -0.006125252123998712,
+      "pnl_mean_se": 0.003112800983203869,
+      "pnl_sd": 0.4402165367415216,
+      "predicted_mean": 0.0,
+      "premium_edge": 0.0,
+      "prob_profit": 0.4968,
+      "sigma_implied": 0.2
+    },
+    {
+      "pnl_mean": 0.3933219470612957,
+      "pnl_mean_se": 0.003261901546129448,
+      "pnl_sd": 0.46130254056620335,
+      "predicted_mean": 0.3987492250416819,
+      "premium_edge": 0.39886809092805775,
+      "prob_profit": 0.82255,
+      "sigma_implied": 0.22
+    },
+    {
+      "pnl_mean": 0.7928302203544486,
+      "pnl_mean_se": 0.0036418344325054703,
+      "pnl_sd": 0.515033164636656,
+      "predicted_mean": 0.7970292667272384,
+      "premium_edge": 0.7977964691568735,
+      "prob_profit": 0.96475,
+      "sigma_implied": 0.24
+    },
+    {
+      "pnl_mean": 1.1923574294685404,
+      "pnl_mean_se": 0.004136099436000087,
+      "pnl_sd": 0.5849327917715031,
+      "predicted_mean": 1.1948411287060903,
+      "premium_edge": 1.1967359365256696,
+      "prob_profit": 0.99545,
+      "sigma_implied": 0.26
+    }
+  ],
+  "r4": {
+    "best_pnl": 1.370805960011694,
+    "best_start": "2020-12-01",
+    "first_date": "2020-01-02",
+    "implied_mean": 0.21633220338983047,
+    "last_date": "2024-12-04",
+    "mean_carry": -0.1253551072562004,
+    "mean_gamma": -0.8450975477606898,
+    "mean_theta": 1.3746548707055979,
+    "n_trades": 59,
+    "offset_mean_max": 0.5388668836707458,
+    "offset_mean_min": 0.34259637194347253,
+    "pnl_mean": 0.4052831274176277,
+    "pnl_mean_se": 0.07720345945985599,
+    "pnl_median": 0.39256754187705667,
+    "pnl_over_premium_mean": 0.1560817493721115,
+    "pnl_skew": -1.146779654442825,
+    "premium_mean": 2.5950715920716663,
+    "prob_profit": 0.7966101694915254,
+    "r2_dollar_gamma_proxy": 0.9772584180995434,
+    "r2_raw_variance_gap": 0.5152871022883616,
+    "realized_mean": 0.17618062704860618,
+    "share_implied_above_realized": 0.8135593220338984,
+    "worst_implied": 0.31989999999999996,
+    "worst_pnl": -2.0442422499917434,
+    "worst_realized": 0.8979585818636981,
+    "worst_start": "2020-03-04"
+  },
+  "r4_robustness": [
+    {
+      "n_trades": 59,
+      "pnl_mean": 0.4052831274176277,
+      "pnl_mean_se": 0.07720345945985599,
+      "pnl_worst": -2.0442422499917434,
+      "prob_profit": 0.7966101694915254,
+      "variant": "baseline"
+    },
+    {
+      "n_trades": 59,
+      "pnl_mean": 0.19053262956383193,
+      "pnl_mean_se": 0.07444293461607106,
+      "pnl_worst": -1.9715001964542749,
+      "prob_profit": 0.6440677966101694,
+      "variant": "sold 2 vol points below VIX"
+    },
+    {
+      "n_trades": 59,
+      "pnl_mean": 0.38210429426245995,
+      "pnl_mean_se": 0.07696463589077308,
+      "pnl_worst": -2.056521880102248,
+      "prob_profit": 0.7796610169491526,
+      "variant": "1 bp one-way cost"
+    }
+  ]
+}

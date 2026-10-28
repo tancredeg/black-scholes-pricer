@@ -64,6 +64,8 @@ select = ["E", "F", "W", "I", "B", "UP", "NPY", "SIM", "RUF"]
 
 [tool.ruff.lint.per-file-ignores]
 "tests/*" = ["E501"]
+# Report scripts build long f-strings of README prose with mathematical symbols (σ, −, √).
+"scripts/*" = ["E501", "RUF001"]
 
 [tool.mypy]
 strict = true
