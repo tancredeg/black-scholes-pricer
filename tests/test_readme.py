@@ -95,4 +95,7 @@ def test_monte_carlo_results_are_reproduced_on_a_smaller_sample(summary, tmp_pat
     for q_row, f_row in zip(quick["r3_table"], full["r3_table"], strict=True):
         se = math.hypot(q_row["pnl_mean_se"], f_row["pnl_mean_se"])
         assert abs(q_row["pnl_mean"] - f_row["pnl_mean"]) < 5 * se
-    assert quick["r4"] == full["r4"]  # R4 uses real data only: identical in both modes
+    # R4 uses real data only: identical in both modes up to floating-point noise across platforms
+    assert quick["r4"].keys() == full["r4"].keys()
+    for key, value in full["r4"].items():
+        assert quick["r4"][key] == (pytest.approx(value, rel=1e-9) if isinstance(value, float) else value)
