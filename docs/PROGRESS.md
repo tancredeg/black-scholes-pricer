@@ -41,7 +41,7 @@
 | M8 packaging, CI | `pyproject` épinglé, LICENSE, ruff, mypy, matrice CI | `2fda71c`, `6fe1982` |
 | M9 chiffre inventé | `NOTEBOOK_PATCHES.md` supprimé | `2fda71c` |
 | m1–m8 | traités par la réécriture (formule de vol réalisée, delta du put expiré, tolérances EDP, justification du test call/put, pic de gamma testé en forme fermée…) | — |
-| m9 `.pyc` obsolète | **à faire par Tancrède** : retirer `bs_pricer.cpython-312.pyc` des documents du projet Claude | — |
+| m9 `.pyc` obsolète | retiré des documents du projet Claude le 2026-10-29 | — |
 
 ## Journal
 
@@ -59,7 +59,8 @@
 ## Reste à faire
 
 1. Créer le tag et la release sur le commit `39163eb` (« Release v1.0.0 ») :
-   `git tag -a v1.0.0 39163eb -m "bspricer v1.0.0" && git push origin v1.0.0`, puis la release GitHub avec les notes fournies en fin de séance.
-2. Épingler le repo sur le profil GitHub (réglage du profil, non modifiable par Claude).
+   `git tag -a v1.0.0 39163eb -m "bspricer v1.0.0" && git push origin v1.0.0`, puis la release GitHub avec `claude/release_notes_v1.0.0.md` (documents du projet Claude).
+   Retenté le 2026-10-29 : la session refuse le push de tags et l'API renvoie « Creating, editing, or deleting releases is not permitted for this session type » (HTTP 403).
+2. Épingler le repo sur le profil GitHub (réglage du profil : pas d'API REST, et l'API GraphQL est fermée aux sessions Claude).
 3. Mettre à jour la description du repo, qui affirme encore « 2000+ pytest assertions » et une couverture sur données SPY réelles au sens de la v0.2 (proposition dans le rapport de séance).
 4. Optionnel v1.1 : delta sticky-strike contre sticky-delta sur un smile synthétique ; vol implicite ATM réelle à la place du VIX si une source publique est disponible.
